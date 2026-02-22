@@ -1,10 +1,4 @@
-1. Update Dockerfile: (same as before, no changes needed if it's working)
 
-2. Update handler.py:
-
-Go to: https://github.com/ytubeust1/lumina-comfyui-worker/blob/main/handler.py
-
-Click Edit and replace with this:
 
 """
 Custom RunPod Handler for Lumina AI ComfyUI Worker
