@@ -1,4 +1,3 @@
-
 FROM runpod/worker-comfyui:5.7.1-sdxl
 
 WORKDIR /
@@ -9,6 +8,13 @@ RUN mkdir -p /comfyui/models/insightface \
     /comfyui/models/ipadapter \
     /comfyui/models/clip_vision \
     /comfyui/models/animatediff_models
+
+ARG CIVITAI_TOKEN
+RUN if [ -n "$CIVITAI_TOKEN" ]; then \
+    wget -q --show-progress --header="Authorization: Bearer ${CIVITAI_TOKEN}" \
+    -O /comfyui/models/checkpoints/lustifySDXL_v7.safetensors \
+    "https://civitai.com/api/download/models/708635?type=Model&format=SafeTensor&size=pruned&fp=fp16"; \
+    else echo "No CIVITAI_TOKEN provided, skipping LUSTIFY download"; fi
 
 RUN cd /comfyui/custom_nodes && \
     ([ -d "comfyui-reactor-node" ] || git clone https://github.com/Gourieff/comfyui-reactor-node.git) && \
