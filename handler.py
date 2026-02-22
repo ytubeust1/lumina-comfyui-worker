@@ -42,7 +42,7 @@ def handler(event):
         import random
         seed = random.randint(1, 2147483647)
     
-    if not wait_for_service("http://127.0.0.1:8188", max_retries=100):
+    if not wait_for_service("http://127.0.0.1:8188", max_retries=300):
         return {"error": "ComfyUI not ready"}
     
     workflow = {
