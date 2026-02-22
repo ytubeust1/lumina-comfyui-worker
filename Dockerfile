@@ -1,6 +1,3 @@
-Go to https://github.com/ytubeust1/lumina-comfyui-worker/blob/main/Dockerfile
-
-Click Edit (pencil icon) and replace with:
 
 FROM runpod/worker-comfyui:5.7.1-sdxl
 
